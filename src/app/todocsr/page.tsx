@@ -4,7 +4,8 @@ import React, { useEffect, useState } from "react";
 const TodoCSR = () => {
   const [todoText, setTodoText] = useState("");
   const [todoList, setTodoList] = useState<Todo[]>([]);
-  const { data: todos } = useQuery({
+
+  const { data: todos, isLoading } = useQuery({
     queryKey: ["todos"],
     queryFn: async () => {
       const response = await fetch("http://localhost:3000/api/todos");
@@ -60,16 +61,16 @@ const TodoCSR = () => {
 
   const handleDeleteAllTodos = () => {
     if (todoList.length > 0) {
-      deleteTodoMutation(todoList);
+      const ok = window.confirm("전체 삭제하시겠습니까?");
+      if (ok) deleteTodoMutation(todoList);
     }
   };
-
   useEffect(() => {
     if (todos) setTodoList(todos?.todos);
   }, [todos]);
 
   return (
-    <div className="flex flex-col justify-center items-center w-3/5 mx-auto mt-16 py-16 border border-solid border-orange-500">
+    <div className="flex flex-col justify-center items-center w-3/5 mx-auto mt-16 py-16">
       <section className="flex flex-col gap-10 w-3/5">
         <h1 className="font-bold text-5xl">Todo APP</h1>
 
@@ -88,6 +89,7 @@ const TodoCSR = () => {
         </div>
 
         <div className="flex flex-col gap-4">
+          {isLoading && <p>로딩중...</p>}
           {todoList.map((todo: Todo, idx: number) => {
             return (
               <section
