@@ -7,7 +7,6 @@ const TodoSSR = async () => {
     cache: "no-cache",
   });
   const todoList = await response.json();
-  console.log("todoList", todoList);
   return (
     <div className="flex flex-col justify-center items-center w-3/5 mx-auto mt-16 py-16">
       <section className="flex flex-col gap-10 w-3/5">
