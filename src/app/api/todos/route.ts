@@ -21,7 +21,6 @@ export async function POST(request: Request) {
   const todo = await response.json();
   return Response.json({ todo });
 }
-export async function PATCH() {}
 export async function DELETE(request: Request) {
   const todos = await request.json();
   await Promise.all(

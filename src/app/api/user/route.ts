@@ -14,6 +14,3 @@ export async function GET(request: Request) {
     userInfo,
   });
 }
-export async function POST() {}
-export async function PATCH() {}
-export async function DELETE() {}

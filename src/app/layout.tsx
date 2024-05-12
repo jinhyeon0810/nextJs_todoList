@@ -29,16 +29,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <QueryProvider>
-          <nav className="flex gap-20 justify-center mt-10">
-            <NavItem>About</NavItem>
-            <NavItem>Report</NavItem>
-            <NavItem>Main</NavItem>
-            <NavItem>Todo-SSR</NavItem>
-            <NavItem>Todo-CSR</NavItem>
-          </nav>
-          {children}
-        </QueryProvider>
+        <nav className="flex gap-20 justify-center mt-10">
+          <NavItem>About</NavItem>
+          <NavItem>Main</NavItem>
+          <NavItem>TodoSSR</NavItem>
+          <NavItem>TodoCSR</NavItem>
+        </nav>
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   );
